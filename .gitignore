@@ -1,0 +1,36 @@
+## .gitignore
+
+```gitignore
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Outputs
+*.xlsx
+
+# Local env / secrets
+.env
+
+# Old code folder (your request)
+old python codes/
+
+# Outputs (generated)
+outputs/
+
+# Exported RIS folders
+science_direct_exports/
+wos_exports/
+ieee_exports/
+
