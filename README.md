@@ -208,3 +208,7 @@ This mode is useful when:
 | Any other filename  | Grouped by file   |
 
 Both modes are fully supported — **no configuration changes required**.
+
+---
+
+This project is licensed under GNU General Public License v3.0 to ensure that improvements made for academic or public use remain open and reproducible.
