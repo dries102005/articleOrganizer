@@ -127,8 +127,8 @@ You may also use a simplified form if you export all results in a single file:
 
 ```text
 1.(MTHFR and HPV)_all.ris
-2.(Virus)_all.ris
-3.(Cancer)_all.ris
+2.(human papillomavirus)_all.ris
+3.(Virus)_all.ris
 ```
 
 The part after the underscore (`_`) can be **anything** (`0-100`, `all`, `results`, etc.).
